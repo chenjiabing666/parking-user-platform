@@ -1,0 +1,93 @@
+
+
+<section class="page-form-ele page" ng-controller="ExpertDetailCtrl">
+
+
+    <div class="row ui-section"  >
+        <div class="col-lg-8 clearfix"> <h2 class="section-header">优惠券详情</h2> </div>
+        <div class="col-md-8 clearfix"> 
+            <md-button class="md-raised btn-w-md md-primary changeClick" ng-click="backClick()">返回</md-button><div class="divider"></div>
+        </div>
+        <div class="col-md-12">
+            <div class="row">
+                        <div class="col-md-2"></div>
+                         <div class="col-md-4">
+                            <!-- <a href="#/expert/expert-change?expertId={{expert.expertId}}" class="btn btn-primary">钱包</a> -->
+                        </div>
+
+                    </div>
+            <section class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row expert-detail" >
+                        <div class="col-lg-8 col-lg-offset-2" class="videoBg">
+
+                            <div layout="column" ng-cloak class="md-inline-form inputdemoBasicUsage">
+                                <md-content layout-padding>
+                                    <form name="expertForm" class="expertForm">
+<div class="form-group clearfix">
+                                            <label for="" class="col-sm-3 control-label">优惠券类型：</label>
+                                            <div class="col-sm-9">
+                                                <select name="status" ng-model="coupon.type">
+                                                    <option value="1" ng-selected="coupon.type==1">通用</option>
+                                                    <option value="2" ng-selected="coupon.type==2">指定停车场</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+
+                                       <div class="form-group clearfix" ng-show="coupon.type==2">
+                                            <label for="" class="col-sm-3 control-label">停车场Id</label>
+                                            <div class="col-sm-9">
+                                                <input class="form-control" class="expertName" ng-model="coupon.parkingId">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group clearfix">
+                                            <label for="" class="col-sm-3 control-label">满减类型：</label>
+                                            <div class="col-sm-9">
+                                                <select name="coupon.status" ng-model="coupon.status">
+                                                    <option value="1" ng-selected="coupon.status==1">满减</option>
+                                                    <option value="-1" ng-selected="coupon.status==-1">无门槛</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group clearfix" ng-show="coupon.status==1">
+                                            <label for="" class="col-sm-3 control-label">满多少：</label>
+                                            <div class="col-sm-9">
+                                                <input class="form-control" class="expertName" ng-model="coupon.full">
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="form-group clearfix">
+                                            <label for="" class="col-sm-3 control-label">减少的钱：</label>
+                                            <div class="col-sm-9">
+                                                <!-- <input class="form-control" class="expertPsd" ng-model="expert.mobile"> -->
+                                               <input class="form-control" class="expertName" ng-model="coupon.money">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group clearfix">
+                                            <label for="" class="col-sm-3 control-label">优惠券总数：</label>
+                                            <div class="col-sm-9">
+                                                <input class="form-control" class="expertName" ng-model="coupon.total">
+                                            </div>
+                                        </div>
+
+                                         <div class="form-group clearfix">
+                                            <label for="" class="col-sm-3 control-label">停车时间：</label>
+                                            <div class="col-sm-9">
+                                                <input class="form-control" class="expertName" ng-model="coupon.timeInterval">
+                                            </div>
+                                        </div>
+
+                                    <div layout layout-sm='column' class="changeConfirm add-btn">
+                                        <md-button class="md-raised btn-w-md md-primary" ng-click="modifyCoupon()">确定修改</md-button><div class="divider"></div>
+                                    </div>
+
+                                    </form>
+    </div>
+</section>

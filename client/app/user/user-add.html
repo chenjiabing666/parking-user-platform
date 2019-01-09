@@ -1,0 +1,134 @@
+
+
+<section class="page-form-ele page" ng-controller="UserAddCtrl">
+
+
+    <div class="row ui-section">
+        <div class="col-lg-8 clearfix"> <h2 class="section-header">添加停车场</h2> </div>
+        <div class="col-md-8 clearfix"> 
+            <md-button class="md-raised btn-w-md md-primary changeClick" ng-click="backClick()">返回</md-button><div class="divider"></div>
+        </div>
+        <div class="col-md-12" ng-show="isShow == 0">
+            <section class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row user-detail" >
+                        <div class="col-lg-8 col-lg-offset-2">
+
+                            <div layout="column" ng-cloak class="md-inline-form inputdemoBasicUsage">
+                                <md-content layout-padding>
+                                    <form name="userForm" class="userForm">
+                                    
+
+                                       <div class="form-group clearfix">
+                                            <label for="" class="col-sm-3 control-label">名称：</label>
+                                            <div class="col-sm-9">
+                                                <input class="form-control" class="userName" ng-model="name">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group clearfix">
+                                            <label for="" class="col-sm-3 control-label">地址：</label>
+                                            <div class="col-sm-3">
+                                                <select ng-model="provinceId" ng-change="getCity(provinceId)">
+                                                    <option value="">请选择</option>
+                                                    <option value="{{province.provinceCode}}" ng-repeat="province in provinces">{{province.provinceName}}</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="col-sm-3">
+                                                <select ng-model="cityId" ng-change="getArea(cityId)">
+                                                    <option value="">请选择</option>
+                                                    <option value="{{city.cityCode}}" ng-repeat="city in cities">{{city.cityName}}</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="col-sm-3">
+                                                <select ng-model="areaId">
+                                                    <option value="">请选择</option>
+                                                    <option value="{{area.areaCode}}" ng-repeat="area in areas">{{area.areaName}}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group clearfix">
+                                            <label for="" class="col-sm-3 control-label">详细地址：</label>
+                                            <div class="col-sm-9">
+                                                <input class="form-control" class="address" ng-model="address">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group clearfix">
+                                            <label for="" class="col-sm-3 control-label">车位：</label>
+                                            <div class="col-sm-9">
+                                                <input class="form-control" class="address" ng-model="total">
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group clearfix">
+                                            <label for="" class="col-sm-3 control-label">图片：</label>
+                                            <div class="col-sm-9">
+                                                <input type="file" class="bannerFile" ng-model="banner.file" accept="image/*" multiple ng-submit="doUploadPhoto()" onchange="angular.element(this).scope().doUploadPhoto(this)">
+                                                <ul class="img-list"  style="height: 100px;"> </ul>
+                                            </div>
+                                        </div>
+
+                                        <!-- <div class="form-group clearfix">
+                                            <label for="" class="col-sm-3 control-label">编号：</label>
+                                            <div class="col-sm-9">
+                                                <input class="form-control" class="userPsd" ng-model="number">
+                                            </div>
+                                        </div> -->
+
+                                        <div class="form-group clearfix">
+                                            <label for="" class="col-sm-3 control-label">电话：</label>
+                                            <div class="col-sm-9">
+                                                <input class="form-control" class="userPsd" ng-model="mobile">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group clearfix">
+                                            <label for="" class="col-sm-3 control-label">经营人：</label>
+                                            <div class="col-sm-9">
+                                                <input class="form-control" class="userPsd" ng-model="operator">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group clearfix">
+                                            <label for="" class="col-sm-3 control-label">登录密码：</label>
+                                            <div class="col-sm-9">
+                                                <input class="form-control" class="userPsd" ng-model="password">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group clearfix">
+                                            <label for="" class="col-sm-3 control-label">每分钟多少钱：</label>
+                                            <div class="col-sm-9">
+                                                <input class="form-control" class="userPsd" ng-model="money">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group clearfix">
+                                            <label for="" class="col-sm-3 control-label">网址：</label>
+                                            <div class="col-sm-9">
+                                                <input class="form-control" class="userPsd" ng-model="webSite">
+                                            </div>
+                                        </div>
+
+
+
+                                        <div layout layout-sm='column' class="changeConfirm add-btn">
+                                            <md-button class="md-raised btn-w-md md-primary" ng-click="adduser()">确定添加</md-button><div class="divider"></div>
+                                        </div>
+                                    
+                                    </form>
+                                </md-content>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>    
+        </div>
+    </div>
+</section>
