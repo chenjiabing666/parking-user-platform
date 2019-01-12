@@ -1243,6 +1243,8 @@ $scope.deleteList = function(){
 
     $scope.isShow = 0;
 
+    $scope.parkingId=sessionStorage.adminId;
+
     var authoritySet = sessionStorage.authoritySet.split(',');
     for (var i = 0; i < authoritySet.length; i++) {
         if (authoritySet[i] == "41") {
@@ -1253,9 +1255,11 @@ $scope.deleteList = function(){
 
     //获取用户列表
     function getExpertList(pageNum, pageSize){
-        $http.post('http://localhost:8080/parking-server/' + 'coupon/getCouponList.do',{},{params:{
+        $http.post('http://localhost:8080/parking-server/' + 'order/getOrderListByParkingId.do',{},{params:{
             parkingId:$scope.parkingId,
-            type:$scope.type,
+            status:$scope.status,
+            mobile:$scope.mobile,
+            carNumber:$scope.carNumber,
             pageNum:pageNum,
             pageSize:pageSize
         }}).success(function (data)  {
@@ -1379,14 +1383,16 @@ $scope.deleteList = function(){
                 init = function() {
                     console.log($scope.numPerPage);
                         console.log($scope.vipType);
-                    $http.post('http://localhost:8080/parking-server/' + 'coupon/getCouponList.do',{},{params:{
+                    $http.post('http://localhost:8080/parking-server/' + 'order/getOrderListByParkingId.do',{},{params:{
+                        parkingId:$scope.parkingId,
                         pageNum:1,
                         pageSize:$scope.numPerPage
                     }}).success(function (data) {
                      if (data.code == 0) {
                        $scope.stores=data.result;
                        $scope.total = data.total;
-                       console.log($scope.stores);
+                       $scope.filteredStores = data.result;
+                       // console.log($scope.stores);
 
                        // $scope.search();
                      // $scope.searchExpert(1,$scope.numPerPage);

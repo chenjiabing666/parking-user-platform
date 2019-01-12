@@ -23,18 +23,18 @@
         //用户登录的方法
         $scope.login = function () {
             console.log($scope.admin)
-            $http.post('http://localhost:8080/parking-server/' + 'admin/login.do', {}, {
+            $http.post('http://localhost:8080/parking-server/' + 'parking/login.do', {}, {
                 params: {
-                    account: $scope.admin,
-                    pwd: $scope.password
+                    mobile: $scope.admin,
+                    password: $scope.password
                 }
             }).success(function (data) {
                 console.log(data);
                 if (data.code == 0) {
-                    console.log(data.result.authorityList);
-                    console.log(data.result.adminId);
+                    // console.log(data.result.authorityList);
+                    // console.log(data.result.adminId);
                     //获取权限列表，放进数组中
-                    $scope.authorityList = data.result.authoritys;
+                    $scope.authorityList = ["1","2","3"];
                     console.log($scope.authorityList)
                     $scope.authoritySet = [];
                     for (var i = 0; i < $scope.authorityList.length; i++) {

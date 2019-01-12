@@ -4,7 +4,7 @@
     <div class="row ui-section">
     <div class="col-md-12">
         <div class="col-md-8 clearfix">
-            <h2 class="section-header">优惠券列表</h2>
+            <h2 class="section-header">订单列表</h2>
         </div>
 
     </div ng-show="isShow == 1">
@@ -16,17 +16,25 @@
                 <form class="expert_list_header">
 
                    <label class="col-sm-2 col-xs-2">
-                        <span >停车场ID</span>
+                        <span >用户账号：</span>
                         <input type="text" id="expertId"  class="border-radius-5 border-default ml-10 input-default input-w-50"
-                        data-ng-model="parkingId" data-ng-keyup="search()" style="width: 150px;">
+                        data-ng-model="mobile" data-ng-keyup="search()" style="width: 150px;">
+                   </label>
+
+                    <label class="col-sm-2 col-xs-2">
+                        <span >车牌号码：</span>
+                        <input type="text" id="expertId"  class="border-radius-5 border-default ml-10 input-default input-w-50"
+                        data-ng-model="carNumber" data-ng-keyup="search()" style="width: 150px;">
                    </label>
 
                    <label class="col-sm-2 col-xs-2">
-                        <span >类型</span>
-                    <select name="select" id="type" data-ng-change="search()" data-ng-model="type">
+                        <span >状态</span>
+                    <select name="select" id="type" data-ng-change="search()" data-ng-model="status">
                         <option value="" >不限</option>
-                        <option value="1">通用</option>
-                        <option value="2">指定停车场</option>
+                        <option value="1">已预约</option>
+                        <option value="2">取消</option>
+                        <option value="3">待付款</option>
+                        <option value="4">已完成</option>
                     </select>
                 </label>
 
@@ -71,7 +79,7 @@
             </div>
 
             <div class="col-md-4 clearfix">
-                <a class=" md-primary add-product" href="#/expert/expert-add">添加优惠券</a>
+                <!-- <a class=" md-primary add-product" href="#/expert/expert-add">添加优惠券</a> -->
                 <!-- <a class=" md-primary add-product"  ng-click="export()" >导出</a> -->
                 <!-- <a class=" md-primary add-product"  ng-click="deleteList()" >批量删除</a> -->
                 <!-- <a class=" md-primary add-product" href="http://localhost:8080/applicationMarket-server/expert/exportExcel.do?expertIds={{expertIdsExcel}}" >导出到Excel</a> -->
@@ -88,20 +96,20 @@
                 <md-checkbox ng-click="selectAll()" ng-checked="isSelectedAll">全选</md-checkbox>
                 </div></th> -->
                 <th><div class="th">
-                优惠券ID
+                账号
                 </div></th>
                 <th><div class="th">
-                面值
+                车牌号
                 </div></th>
                 <th><div class="th">
-                类型
+                开始时间
                 </div></th>
 
                 <th><div class="th">
-                总数
+                结束时间
                 </div></th>
                 <th><div class="th">
-                停车时间
+                状态
                 </div></th>
                 <!-- <th><div class="th">
                 擅长技能
@@ -119,24 +127,28 @@
                 是否开发者
                 </div></th> -->
                 
-                <th><div class="th">
+                <!-- <th><div class="th">
                 操作
-                </div></th>
+                </div></th> -->
             </tr>
 
             </thead>
             <tbody>
               <tr data-ng-repeat="store in currentPageStores" class="delete-{{store.id}}">
                 <!-- <td> <md-checkbox ng-click="selectItem(store.expertId)" ng-checked="selected[store.expertId]"></md-checkbox></td> -->
-                <td ng-bind="store.id"></td>
+                <td ng-bind="store.mobile"></td>
+                <td ng-bind="store.carNumber"></td>
+                 <td ng-bind="store.startTime"></td>
+                <td ng-bind="store.endTime"></td>
                 <!-- <td ng-bind="store.expertType | parseExpertType"></td> -->
-                <td ng-bind="store.money"></td>
+                
                 <td>
-                   <p ng-show="store.type==1">通用</p>
-                   <p ng-show="store.type==2">指定停车场</p>
+                   <p ng-show="store.status==1">已预约</p>
+                   <p ng-show="store.status==2">已取消</p>
+                   <p ng-show="store.status==3">待付款</p>
+                   <p ng-show="store.status==4">已完成</p>
                 </td>
-                <td ng-bind="store.total"></td>
-                <td ng-bind="store.timeInterval"></td>
+               
 
                 <!-- <td>
                     <p ng-if="store.gender==1">男</p>
@@ -153,12 +165,9 @@
 
                 </td> -->
 
-                <td class="opertation">
-                    <!-- <a href="#/expert/expert-change?id={{store.expertId}}">编辑</a> -->
-                    <a href="" ng-click="deleteExpert(store.id)">删除</a>
-                    <a href="#/expert/expert-detail?id={{store.id}}">详情</a>
-                    <!-- <a href="" ng-click="setElite(store.expertId)">设为精英</a> -->
-                </td>
+                <!-- <td class="opertation">
+                    
+                </td> -->
                  <!-- <a href="" ng-click="deleteExpert(store.expertId)">删除</a></td> -->
               </tr>
 
